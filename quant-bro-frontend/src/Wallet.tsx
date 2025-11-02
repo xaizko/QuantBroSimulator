@@ -29,7 +29,7 @@ function Wallet() {
     })
 
     // State for retrieving Solana price
-    const [solPrice, setSolPrice] = useState(9999)
+    const [solPrice, setSolPrice] = useState(0)
     const [isPriceLoading, setIsPriceLoading] = useState(true)
 
     // State for when converting cash to Solana

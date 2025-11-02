@@ -13,7 +13,7 @@ function StartScreen() {
     const [error, setError] = useState('')
     const navigate = useNavigate()
     const CONNECTION_API = import.meta.env.VITE_QUICKNODE_URL
-    const DEVNET_API = clusterApiUrl('devnet')
+    // const DEVNET_API = clusterApiUrl('devnet')
 
     const [isErrorBoxOpen, setIsErrorBoxOpen] = useState(false)
     const [newKey, setNewKey] = useState('')
