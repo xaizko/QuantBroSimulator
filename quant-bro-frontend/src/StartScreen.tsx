@@ -10,6 +10,8 @@ function StartScreen() {
     const [keyInput, setKeyInput] = useState('')
     const [error, setError] = useState('')
     const navigate = useNavigate()
+    const CONNECTION_API = "https://icy-distinguished-liquid.solana-devnet.quiknode.pro/1b7fc4c2458dd31dacd2c29dc367de70bd3761f1/"
+    const DEVNET_API = clusterApiUrl('devnet')
 
     const [isErrorBoxOpen, setIsErrorBoxOpen] = useState(false)
     const [newKey, setNewKey] = useState('')
@@ -40,7 +42,7 @@ function StartScreen() {
 	    },
 	};
 
-	const connection = new Connection(clusterApiUrl("devnet"), "confirmed")
+	const connection = new Connection(CONNECTION_API, "confirmed")
 	const provider = new AnchorProvider(connection, wallet, {preflightCommitment: "confirmed"})
 	const program = new Program(idl as Idl, provider)
 
@@ -51,6 +53,7 @@ function StartScreen() {
 	const {program, provider, connection} = getProviderAndProgram(keypair)
 	
 	try {
+	    /*
 	    const signature = await connection.requestAirdrop(
 		keypair.publicKey,
 		LAMPORTS_PER_SOL
@@ -62,6 +65,7 @@ function StartScreen() {
 		blockhash: latestBlockhash.blockhash,
 		lastValidBlockHeight: latestBlockhash.lastValidBlockHeight
 	    }, "confirmed");
+	    */
 
 
 	    const [playerDataPDA] = PublicKey.findProgramAddressSync(
@@ -77,9 +81,17 @@ function StartScreen() {
 	    })
 	    .rpc();
 
+	    console.log("New account created")
 
-	} catch {
-	    console.log("Player already exists.")
+	} catch (e) {
+	    const errorString = e.toString()
+	    if (errorString.includes("already in use")) {
+		console.log("Player already exists, logging in")
+	    } else {
+		console.error("Failed to initialize player", e)
+		setError("Try again.")
+		return;
+	    }
 	}
 
 	localStorage.setItem("userKey", keyString)

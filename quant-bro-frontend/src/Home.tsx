@@ -7,6 +7,8 @@ import { type QuantBroServer } from './quant_bro_server.json'
 
 function Home() {
     const [balance, setBalance] = useState(0)
+    const CONNECTION_API = "https://icy-distinguished-liquid.solana-devnet.quiknode.pro/1b7fc4c2458dd31dacd2c29dc367de70bd3761f1/"
+    const DEVNET_API = clusterApiUrl('devnet')
 
     useEffect(() => {
 	const fetchBalance = async() => {
@@ -44,7 +46,7 @@ function Home() {
 		    });
 		},
 	    };
-	    const connection = new Connection(clusterApiUrl("devnet"), "confirmed")
+	    const connection = new Connection(CONNECTION_API, "confirmed")
 	    const provider = new AnchorProvider(connection, wallet, { preflightCommitment: "confirmed" })
 	    const program = new Program<QuantBroServer>(idl as Idl, provider)
 
