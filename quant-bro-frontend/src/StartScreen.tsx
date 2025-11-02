@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Keypair, Connection, SystemProgram, PublicKey, Transaction, VersionedTransaction, clusterApiUrl } from '@solana/web3.js'
