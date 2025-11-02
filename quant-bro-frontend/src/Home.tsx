@@ -1,4 +1,4 @@
-import { Keypair, Connection, PublicKey, Transaction, VersionedTransaction } from "@solana/web3.js";
+import { Keypair, Connection, PublicKey, Transaction, VersionedTransaction, clusterApiUrl } from "@solana/web3.js";
 import { useState, useEffect } from 'react'
 import { Program, AnchorProvider, type Idl } from '@coral-xyz/anchor'
 import { Buffer } from 'buffer'
@@ -44,7 +44,7 @@ function Home() {
 		    });
 		},
 	    };
-	    const connection = new Connection("http://127.0.0.1:8899", "confirmed")
+	    const connection = new Connection(clusterApiUrl("devnet"), "confirmed")
 	    const provider = new AnchorProvider(connection, wallet, { preflightCommitment: "confirmed" })
 	    const program = new Program<QuantBroServer>(idl as Idl, provider)
 

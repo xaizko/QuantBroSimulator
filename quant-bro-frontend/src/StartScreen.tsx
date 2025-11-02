@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Keypair, Connection, LAMPORTS_PER_SOL, SystemProgram, PublicKey, Transaction, VersionedTransaction } from '@solana/web3.js'
+import { Keypair, Connection, LAMPORTS_PER_SOL, SystemProgram, PublicKey, Transaction, VersionedTransaction, clusterApiUrl } from '@solana/web3.js'
 import { Program, AnchorProvider, type Idl } from '@coral-xyz/anchor'
 import { Buffer } from 'buffer'
 import './StartScreen.css'
@@ -40,7 +40,7 @@ function StartScreen() {
 	    },
 	};
 
-	const connection = new Connection("http://127.0.0.1:8899", "confirmed")
+	const connection = new Connection(clusterApiUrl("devnet"), "confirmed")
 	const provider = new AnchorProvider(connection, wallet, {preflightCommitment: "confirmed"})
 	const program = new Program(idl as Idl, provider)
 
