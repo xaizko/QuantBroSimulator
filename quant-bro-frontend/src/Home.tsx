@@ -4,10 +4,11 @@ import { Program, AnchorProvider, type Idl } from '@coral-xyz/anchor'
 import { Buffer } from 'buffer'
 import idl from './quant_bro_server.json'
 import { type QuantBroServer } from './quant_bro_server.json'
+import './Home.css'
 
 function Home() {
     const [balance, setBalance] = useState(0)
-    const CONNECTION_API = "https://icy-distinguished-liquid.solana-devnet.quiknode.pro/1b7fc4c2458dd31dacd2c29dc367de70bd3761f1/"
+    const CONNECTION_API = import.meta.env.VITE_QUICKNODE_URL
     const DEVNET_API = clusterApiUrl('devnet')
 
     useEffect(() => {
@@ -64,8 +65,9 @@ function Home() {
     }, [])
 
     return (
-	<div>
-	    <h1>Total Balance: {balance.toString()} SOL </h1>
+	<div className="home-container">
+	    <h3 className="balance-label">Total In-Game Balance</h3>
+	    <h1 className="balance-title">{balance.toString()} SOL</h1>
 	</div>
     )
 }
