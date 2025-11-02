@@ -8,11 +8,14 @@ skip-lint = false
 [programs.localnet]
 quant_bro_server = "6oy9TxCtaq4EJ7fvMDwau8w9S8fwQ9azRiGiWjZYJGgB"
 
+[programs.devnet]
+quant_bro_server = "6oy9TxCtaq4EJ7fvMDwau8w9S8fwQ9azRiGiWjZYJGgB"
+
 [registry]
 url = "https://api.apr.dev"
 
 [provider]
-cluster = "localnet"
+cluster = "Devnet"
 wallet = "~/.config/solana/id.json"
 
 [scripts]
