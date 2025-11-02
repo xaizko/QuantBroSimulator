@@ -1,0 +1,63 @@
+.start-screen-container {
+  background-image: url('./assets/solana_start_screen.png');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.start-screen-content {
+  background-color: rgba(10, 10, 20, 0.75); 
+  backdrop-filter: blur(8px);
+  padding: 3rem 4rem;
+  border-radius: 12px;
+  text-align: center;
+  color: white;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.start-screen-content h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+  background: linear-gradient(90deg, #9945FF, #14F195);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.start-screen-content p {
+  font-size: 1.25rem;
+  color: #e0e0e0;
+  margin: 0.5rem 0;
+}
+
+.start-screen-content .subtitle {
+  font-size: 1rem;
+  color: #a0a0a0;
+  margin-top: 1.5rem;
+  font-weight: 500;
+}
+
+.start-screen-content button {
+  background: linear-gradient(90deg, #9945FF, #14F195);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 600;
+  padding: 14px 28px;
+  margin-top: 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.start-screen-content button:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 4px 20px rgba(153, 69, 255, 0.4);
+}
