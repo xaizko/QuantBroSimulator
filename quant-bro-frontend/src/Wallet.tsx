@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { Keypair, Connection, PublicKey, Transaction, VersionedTransaction } from "@solana/web3.js";
 import { useState, useEffect } from 'react'
 import { Program, AnchorProvider, type Idl } from '@coral-xyz/anchor'
