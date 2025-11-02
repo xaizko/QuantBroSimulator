@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Keypair, Connection, LAMPORTS_PER_SOL, SystemProgram, PublicKey, Transaction, VersionedTransaction, clusterApiUrl } from '@solana/web3.js'
+import { Keypair, Connection, SystemProgram, PublicKey, Transaction, VersionedTransaction, clusterApiUrl } from '@solana/web3.js'
 import { Program, AnchorProvider, type Idl } from '@coral-xyz/anchor'
 import { Buffer } from 'buffer'
 import './StartScreen.css'
@@ -10,7 +10,7 @@ function StartScreen() {
     const [keyInput, setKeyInput] = useState('')
     const [error, setError] = useState('')
     const navigate = useNavigate()
-    const CONNECTION_API = "https://icy-distinguished-liquid.solana-devnet.quiknode.pro/1b7fc4c2458dd31dacd2c29dc367de70bd3761f1/"
+    const CONNECTION_API = import.meta.env.VITE_QUICKNODE_URL
     const DEVNET_API = clusterApiUrl('devnet')
 
     const [isErrorBoxOpen, setIsErrorBoxOpen] = useState(false)
