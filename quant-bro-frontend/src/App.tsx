@@ -4,7 +4,7 @@ import StartScreen from './StartScreen'
 import GameLayout from './GameLayout'
 import Home from './Home'
 import Market from './Market'
-import Walelt from './Wallet'
+import Wallet from './Wallet'
 import Transactions from './Transactions'
 
 function App() {
