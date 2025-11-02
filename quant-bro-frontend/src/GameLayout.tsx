@@ -1,39 +1,49 @@
-import { NavLink, Outlet } from 'react-router-dom'
+import { NavLink, Outlet, useNavigate } from 'react-router-dom'
+import { useEffect } from 'react'
 import './GameLayout.css'
 import logo from './assets/solana_start_screen.png'
 
 function GameLayout() {
-  return (
-    <div className="game-layout">
-      <nav className="sidebar">
-        
-        <img src={logo} alt="Logo" className="sidebar-logo" />
+    const navigate = useNavigate()
 
-        <div className="sidebar-nav">
-          <NavLink to="/home" className="nav-link">
-            🏠
-          </NavLink>
-          
-          <NavLink to="/market" className="nav-link">
-            📈
-          </NavLink>
+    useEffect(() => {
+	const key = localStorage.getItem("userKey")
 
-          <NavLink to="/wallet" className="nav-link">
-            💼
-          </NavLink>
-          
-          <NavLink to="/transactions" className="nav-link">
-            🧾
-          </NavLink>
-        </div>
+	// No key = no access
+	if (!key) {
+	    navigate('/)')
+	}
+    }, [navigate])
+    return (
+	<div className="game-layout">
+	    <nav className="sidebar">
 
-      </nav>
+		<img src={logo} alt="Logo" className="sidebar-logo" />
 
-      <main className="page-content">
-        <Outlet />
-      </main>
-    </div>
-  )
+		<div className="sidebar-nav">
+		    <NavLink to="/home" className="nav-link">
+			🏠
+		    </NavLink>
+
+		    <NavLink to="/market" className="nav-link">
+			📈
+		    </NavLink>
+
+		    <NavLink to="/wallet" className="nav-link">
+			💼
+		    </NavLink>
+
+		    <NavLink to="/transactions" className="nav-link">
+			🧾
+		    </NavLink>
+		</div>
+	    </nav>
+
+	    <main className="page-content">
+		<Outlet />
+	    </main>
+	</div>
+    )
 }
 
 export default GameLayout
