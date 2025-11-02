@@ -33,9 +33,12 @@ function GameLayout() {
 			💼
 		    </NavLink>
 
+		    { /* Didn't have enough time to finish
 		    <NavLink to="/transactions" className="nav-link">
 			🧾
 		    </NavLink>
+		    */ }
+
 		</div>
 	    </nav>
 
