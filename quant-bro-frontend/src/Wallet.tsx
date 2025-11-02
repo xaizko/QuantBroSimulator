@@ -13,9 +13,18 @@ const COIN_URL = "https://api.coingecko.com/api/v3/simple/price"
 
 function Wallet() {
     // Game stats
-    const [cash, setCash] = useState(0)
-    const [clickPower, setClickPower] = useState(1)
-    const [upgradeCost, setUpgradeCost] = useState(50)
+    const [cash, setCash] = useState(() => {
+	const savedCash = localStorage.getItem("savedCash")
+	return savedCash ? JSON.parse(savedCash) : 0
+    })
+    const [clickPower, setClickPower] = useState(() => {
+	const savedPower = localStorage.getItem("savedPower")
+	return savedPower ? JSON.parse(savedPower) : 1
+    })
+    const [upgradeCost, setUpgradeCost] = useState(() => {
+	const savedCost = localStorage.getItem("savedCost")
+	return savedCost ? JSON.parse(savedCost) : 50
+    })
 
     // State for retrieving Solana price
     const [solPrice, setSolPrice] = useState(9999)
@@ -24,6 +33,13 @@ function Wallet() {
     // State for when converting cash to Solana
     const [isConverting, setIsConverting] = useState(false)
     const [error, setError] = useState('')
+
+    // Saves game stats on change
+    useEffect(() => {
+	localStorage.setItem("savedCash", JSON.stringify(cash));
+	localStorage.setItem("savedPower", JSON.stringify(clickPower));
+	localStorage.setItem("savedCost", JSON.stringify(upgradeCost));
+    }, [cash, clickPower, upgradeCost]);
 
     useEffect(() => {
 	const fetchSolPrice = async () => {
