@@ -17,6 +17,29 @@ pub mod quant_bro_server {
 
         Ok(())
     }
+
+    pub fn exchange_money(ctx: Context<EarnTokens>) -> Result<()> {
+        let player_data = &mut ctx.accounts.player_data;
+        player_data.sol_balance += 1;
+
+        Ok(())
+    }
+}
+
+#[derive(Accounts)]
+pub struct EarnTokens<'info> {
+    // Find player's save file
+    #[account(
+        mut,
+        seeds = [b"player", user.key().as_ref()],
+        bump = player_data.bump,
+    )]
+
+    pub player_data: Account<'info, PlayerData>,
+
+    // User signing
+    #[account(mut)]
+    pub user: Signer<'info>
 }
 
 #[account] 
